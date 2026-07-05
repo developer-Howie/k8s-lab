@@ -1,23 +1,25 @@
 # k8s-lab
 
-A personal Kubernetes lab built with kubeadm on VMware, documenting infrastructure setup, Helm deployments, middleware, Java microservices, and GitOps practices. Includes installation guides, configuration files, automation scripts, and architecture documentation.
+---
+
+###### A personal Kubernetes lab built with kubeadm on VMware, documenting infrastructure setup, Helm deployments, middleware, Java microservices, and GitOps practices. Includes installation guides, configuration files, automation scripts, and architecture documentation.
 
 ## 1. Version
 
-| Software                     | Version                                                                     |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| VMware® Workstation Pro 26H1 | 26.0.0.25388281                                                             |
-| Rocky Linux                  | Rocky-10-latest-x86\_64-minimal.iso (Rocky Linux release 10.2 (Red Quartz)) |
-| Docker                       | 29.6.1                                                                      |
-| cri-dockerd                  | cri-dockerd-0.3.25.amd64                                                    |
-| Kubernetes                   | v1.36.2                                                                     |
-| CNI - Flannel                | v0.28.5                                                                     |
-| MetalLB                      | 0.16.1                                                                      |
-| Nginx-Ingress                | 2.6.1                                                                       |
-| Cert-Manager                 | 1.20.3                                                                      |
-| Longhorn                     | 1.12.0                                                                      |
-| Metrics-server               | 3.13.1                                                                      |
-| Headlamp                     | 0.43.0                                                                      |
+| Software & Component          | Version (Chart)                                                             |
+|-------------------------------|-----------------------------------------------------------------------------|
+| VMware® Workstation Pro 26H1  | 26.0.0.25388281                                                             |
+| Rocky Linux                   | Rocky-10-latest-x86_64-minimal.iso (Rocky Linux release 10.2 (Red Quartz))  |
+| Docker                        | 29.6.1                                                                      |
+| cri-dockerd                   | cri-dockerd-0.3.26.amd64                                                    |
+| Kubernetes                    | v1.36.2                                                                     |
+| Flannel                       | v0.28.5                                                                     |
+| MetalLB                       | 0.16.1                                                                      |
+| Nginx-Ingress                 | 2.6.1                                                                       |
+| Cert-Manager                  | 1.20.3                                                                      |
+| Longhorn                      | 1.12.0                                                                      |
+| Headlamp                      | 0.43.0                                                                      |
+| Metrics-server                | 3.13.1                                                                      |
 
 ## 2. Cluster Planning and Design
 
@@ -29,16 +31,16 @@ A personal Kubernetes lab built with kubeadm on VMware, documenting infrastructu
 ### 2.2. IP Address Planning
 
 | Node        | IPv4 Address   | Subnet Mask   | Default Gateway | DNS Server      |
-| ----------- |----------------| ------------- | --------------- | --------------- |
-| k8s-master  | 192.168.47.100 | 255.255.255.0 | 192.168.47.2   | 114.114.114.114 |
-| k8s-worker1 | 192.168.47.110 | 255.255.255.0 | 192.168.47.2   | 114.114.114.114 |
-| k8s-worker2 | 192.168.47.111 | 255.255.255.0 | 192.168.47.2   | 114.114.114.114 |
+| ----------- | -------------- | ------------- | --------------- | --------------- |
+| k8s-master  | 192.168.47.100 | 255.255.255.0 | 192.168.47.2    | 114.114.114.114 |
+| k8s-worker1 | 192.168.47.110 | 255.255.255.0 | 192.168.47.2    | 114.114.114.114 |
+| k8s-worker2 | 192.168.47.111 | 255.255.255.0 | 192.168.47.2    | 114.114.114.114 |
 
 > **Note**: Default Gateway should reference the actual vmnet8 address in VMware.
 
-![img.png](images/readme/01.png)
-![img_1.png](images/readme/02.png)
-![img_2.png](images/readme/03.png)
+![01.png](images/readme/01.png)
+![02.png](images/readme/02.png)
+![03.png](images/readme/03.png)
 
 ### 2.3. VM Specifications
 
