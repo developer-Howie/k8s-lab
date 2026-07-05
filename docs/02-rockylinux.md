@@ -1,6 +1,8 @@
-# Install Rockylinux
+# How to Install Rockylinux
 
 ---
+
+## Installation
 
 ![01.png](../images/docs/02-rockylinux/01.png)
 
@@ -36,8 +38,12 @@
 
 ![17.png](../images/docs/02-rockylinux/17.png)
 
+> **Note**: Install operating systems for the other two nodes in the same way. If cloning is used, log into the newly cloned virtual machines to modify their IP and MAC addresses.
+
 ---
 
-> Use xshell to connect three vm and check ip address
+## Verification
+
+> **Note**: Log in to the three virtual machines using Xshell and operate all three simultaneously via its multi-session feature.
 
 ![18.png](../images/docs/02-rockylinux/18.png)

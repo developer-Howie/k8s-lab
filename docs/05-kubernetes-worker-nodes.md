@@ -1,4 +1,10 @@
-# Join Cluster
+# How to Make Worker Node Join Cluster
+
+###### * Execute the join command only on worker nodes.
+
+---
+
+## Installation
 
 ```shell
 kubeadm join 192.168.47.100:6443 \
@@ -7,13 +13,17 @@ kubeadm join 192.168.47.100:6443 \
 	--cri-socket unix:///var/run/cri-dockerd.sock
 ```
 
-![img.png](../images/docs/05-kubernetes-worker-nodes/01.png)
+![01.png](../images/docs/05-kubernetes-worker-nodes/01.png)
 
-![img_1.png](../images/docs/05-kubernetes-worker-nodes/02.png)
+> After the node joins successfully, Flannel will automatically start a new Pod on the node. Wait a moment, and you will see the new node turn to the Ready state.
+
+![02.png](../images/docs/05-kubernetes-worker-nodes/02.png)
 
 ---
 
-> Test
+## Verification
+
+> Create a Service of NodePort type for testing purposes.
 
 ```yaml
 apiVersion: apps/v1
@@ -31,25 +41,25 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:alpine
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-node-port
+  name: nginx-node-port-svc
 spec:
   type: NodePort
   selector:
     app: nginx
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30080
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
 ```
 
-![img_2.png](../images/docs/05-kubernetes-worker-nodes/03.png)
+![03.png](../images/docs/05-kubernetes-worker-nodes/03.png)
 
-![img_3.png](../images/docs/05-kubernetes-worker-nodes/04.png)
+![04.png](../images/docs/05-kubernetes-worker-nodes/04.png)

@@ -1,15 +1,27 @@
-# Install Nginx-Ingress
+# How to Install Nginx-Ingress
+
+###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ---
+
+## Installation
+
+> Since the official Kubernetes ingress-nginx has ceased maintenance, we will adopt the official nginx-ingress component provided by Nginx here.
 
 ```shell
 helm repo add nginx https://helm.nginx.com/stable
 helm install nginx-ingress nginx/nginx-ingress --version 2.6.1 --create-namespace -n nginx-ingress
 ```
 
-![img.png](../images/docs/07-nginx-ingress/img.png)
+![01.png](../images/docs/07-nginx-ingress/01.png)
 
-![img_2.png](../images/docs/07-nginx-ingress/img_2.png)
+![02.png](../images/docs/07-nginx-ingress/03.png)
+
+---
+
+## Verification
+
+> Create an Ingress for testing purposes.
 
 ```yaml
 apiVersion: apps/v1
@@ -62,10 +74,10 @@ spec:
             path: /
 ```
 
-![img_3.png](../images/docs/07-nginx-ingress/img_3.png)
+![03.png](../images/docs/07-nginx-ingress/04.png)
 
-> Add host to /etc/hosts
+> Add the host name to the /etc/hosts file.
 
-![img_4.png](../images/docs/07-nginx-ingress/img_4.png)
+![04.png](../images/docs/07-nginx-ingress/05.png)
 
-![img_5.png](../images/docs/07-nginx-ingress/img_5.png)
+![05.png](../images/docs/07-nginx-ingress/06.png)

@@ -1,6 +1,12 @@
-# Install Longhorn
+# How to Install CSI - Longhorn
+
+###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ---
+
+## Installation
+
+> Since Longhorn is chosen as our CSI implementation, iscsi-initiator-utils must be installed in advance.
 
 ```shell
 dnf -y install iscsi-initiator-utils
@@ -20,6 +26,8 @@ helm install longhorn longhorn/longhorn --version 1.12.0 --create-namespace --na
 
 ![04.png](../images/docs/09-longhorn/04.png)
 
+> Since the NFS protocol is selected, nfs-utils needs to be pre-installed.
+
 ```shell
 dnf -y install nfs-utils
 systemctl enable --now rpcbind
@@ -27,6 +35,12 @@ systemctl enable --now rpcbind
 
 ![05.png](../images/docs/09-longhorn/05.png)
 ![06.png](../images/docs/09-longhorn/06.png)
+
+---
+
+## Verification
+
+> Create a PVC for testing purposes.
 
 ```yaml
 apiVersion: v1
@@ -43,6 +57,10 @@ spec:
 ```
 
 ![07.png](../images/docs/09-longhorn/07.png)
+
+---
+
+> Create two Pods. One Pod writes logs to files in the shared directory, while the other reads content from the files in the shared directory and prints them out.
 
 ```yaml
 apiVersion: v1

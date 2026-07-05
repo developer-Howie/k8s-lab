@@ -1,13 +1,19 @@
-# Install Cert Manager
+# How to Install Cert Manager
+
+###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ---
+
+## Installation
 
 ```shell
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --version v1.20.3 --create-namespace -n cert-manager --set crds.enabled=true 
 ```
 
-![img.png](../images/docs/08-cert-manager/img.png)
+![01.png](../images/docs/08-cert-manager/01.png)
+
+> This YAML manifest deploys a complete self-signed root CA system via cert-manager, including a self-signed issuer, root CA certificate resource and cluster-wide CA issuer, to provide trusted TLS certificate signing capabilities for the Kubernetes cluster.
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -43,6 +49,12 @@ spec:
   ca:
     secretName: local-root-ca-secret
 ```
+
+---
+
+## Verification
+
+> Create an Ingress for testing purposes.
 
 ```yaml
 apiVersion: apps/v1
@@ -101,4 +113,4 @@ spec:
             path: /
 ```
 
-![img_2.png](../images/docs/08-cert-manager/img_2.png)
+![02.png](../images/docs/08-cert-manager/02.png)

@@ -1,4 +1,4 @@
-# Create VM
+# How to Create VM
 
 ---
 
@@ -28,7 +28,7 @@
 
 ---
 
-> local cluster, no need to do migration in the future, thus use one file is ok
+> **Note**: Since this is a local environment setup with no migration process involved, we use a single file for storage.
 
 ![13.png](../images/docs/01-vmware/13.png)
 
@@ -36,7 +36,7 @@
 
 ---
 
-> remove unused hardware as needed
+> **Note**: Remove unused hardware as needed
 
 ![15.png](../images/docs/01-vmware/15.png)
 
@@ -50,6 +50,6 @@
 
 ---
 
-> use the same way to create k8s-worker1 and k8s-worker2
+> **Note**: Create the k8s-worker1 and k8s-worker2 nodes in the same manner, or create other nodes by cloning k8s-master.
 
 ![19.png](../images/docs/01-vmware/19.png)
