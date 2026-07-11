@@ -11,7 +11,7 @@ helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --version v1.20.3 --create-namespace -n cert-manager --set crds.enabled=true 
 ```
 
-![01.png](../images/docs/08-cert-manager/01.png)
+![01.png](../../images/docs/infra/08-cert-manager/01.png)
 
 > This YAML manifest deploys a complete self-signed root CA system via cert-manager, including a self-signed issuer, root CA certificate resource and cluster-wide CA issuer, to provide trusted TLS certificate signing capabilities for the Kubernetes cluster.
 
@@ -113,4 +113,4 @@ spec:
             path: /
 ```
 
-![02.png](../images/docs/08-cert-manager/02.png)
+![02.png](../../images/docs/infra/08-cert-manager/02.png)

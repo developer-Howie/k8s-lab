@@ -13,11 +13,11 @@ kubeadm join 192.168.47.100:6443 \
 	--cri-socket unix:///var/run/cri-dockerd.sock
 ```
 
-![01.png](../images/docs/05-kubernetes-worker-nodes/01.png)
+![01.png](../../images/docs/infra/05-kubernetes-worker-nodes/01.png)
 
 > After the node joins successfully, Flannel will automatically start a new Pod on the node. Wait a moment, and you will see the new node turn to the Ready state.
 
-![02.png](../images/docs/05-kubernetes-worker-nodes/02.png)
+![02.png](../../images/docs/infra/05-kubernetes-worker-nodes/02.png)
 
 ---
 
@@ -60,6 +60,6 @@ spec:
       nodePort: 30080
 ```
 
-![03.png](../images/docs/05-kubernetes-worker-nodes/03.png)
+![03.png](../../images/docs/infra/05-kubernetes-worker-nodes/03.png)
 
-![04.png](../images/docs/05-kubernetes-worker-nodes/04.png)
+![04.png](../../images/docs/infra/05-kubernetes-worker-nodes/04.png)

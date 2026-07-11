@@ -13,9 +13,9 @@ helm repo add nginx https://helm.nginx.com/stable
 helm install nginx-ingress nginx/nginx-ingress --version 2.6.1 --create-namespace -n nginx-ingress
 ```
 
-![01.png](../images/docs/07-nginx-ingress/01.png)
+![01.png](../../images/docs/infra/07-nginx-ingress/01.png)
 
-![02.png](../images/docs/07-nginx-ingress/03.png)
+![02.png](../../images/docs/infra/07-nginx-ingress/03.png)
 
 ---
 
@@ -74,10 +74,10 @@ spec:
             path: /
 ```
 
-![03.png](../images/docs/07-nginx-ingress/04.png)
+![03.png](../../images/docs/infra/07-nginx-ingress/04.png)
 
 > Add the host name to the /etc/hosts file.
 
-![04.png](../images/docs/07-nginx-ingress/05.png)
+![04.png](../../images/docs/infra/07-nginx-ingress/05.png)
 
-![05.png](../images/docs/07-nginx-ingress/06.png)
+![05.png](../../images/docs/infra/07-nginx-ingress/06.png)

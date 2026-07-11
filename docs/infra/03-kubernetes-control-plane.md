@@ -8,9 +8,9 @@
 
 ### 0.1 Write hostname into /etc/hosts file
 
-![01.png](../images/docs/03-kubernetes-control-plane/01.png)
+![01.png](../../images/docs/infra/03-kubernetes-control-plane/01.png)
 
-![02.png](../images/docs/03-kubernetes-control-plane/02.png)
+![02.png](../../images/docs/infra/03-kubernetes-control-plane/02.png)
 
 ### 0.2 Install `wget` command
 
@@ -18,7 +18,7 @@
 dnf -y install wget
 ```
 
-![03.png](../images/docs/03-kubernetes-control-plane/03.png)
+![03.png](../../images/docs/infra/03-kubernetes-control-plane/03.png)
 
 ### 0.3 Shutdown firewall
 
@@ -29,7 +29,7 @@ systemctl disable firewalld
 systemctl status firewalld
 ```
 
-![04.png](../images/docs/03-kubernetes-control-plane/04.png)
+![04.png](../../images/docs/infra/03-kubernetes-control-plane/04.png)
 
 ---
 
@@ -44,7 +44,7 @@ sed -i '/swap/s/^/#/' /etc/fstab # Permanently disable to prevent restoration af
 swapon --show
 ```
 
-![05.png](../images/docs/03-kubernetes-control-plane/05.png)
+![05.png](../../images/docs/infra/03-kubernetes-control-plane/05.png)
 
 ### 1.2 Set SELinux to permissive mode
 
@@ -55,7 +55,7 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config # Permane
 getenforce
 ```
 
-![06.png](../images/docs/03-kubernetes-control-plane/06.png)
+![06.png](../../images/docs/infra/03-kubernetes-control-plane/06.png)
 
 ### 1.3 Load br_netfilter kernel module for Kubernetes networking
 
@@ -66,7 +66,7 @@ modprobe br_netfilter
 echo 'br_netfilter' | sudo tee /etc/modules-load.d/k8s.conf
 ```
 
-![07.png](../images/docs/03-kubernetes-control-plane/07.png)
+![07.png](../../images/docs/infra/03-kubernetes-control-plane/07.png)
 
 ---
 
@@ -80,16 +80,16 @@ dnf -y install dnf-plugins-core
 dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/rhel/docker-ce.repo
 ```
 
-![08.png](../images/docs/03-kubernetes-control-plane/08.png)
+![08.png](../../images/docs/infra/03-kubernetes-control-plane/08.png)
 
 #### 2.1.2 Install the Docker packages
 ```shell
 dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-![09.png](../images/docs/03-kubernetes-control-plane/09.png)
+![09.png](../../images/docs/infra/03-kubernetes-control-plane/09.png)
 
-![10.png](../images/docs/03-kubernetes-control-plane/10.png)
+![10.png](../../images/docs/infra/03-kubernetes-control-plane/10.png)
 
 #### 2.1.3 Domestic mirror sources are used as alternatives here.
 ```shell
@@ -101,21 +101,21 @@ tee /etc/docker/daemon.json <<-'EOF'
 EOF
 ```
 
-![11.png](../images/docs/03-kubernetes-control-plane/11.png)
+![11.png](../../images/docs/infra/03-kubernetes-control-plane/11.png)
 
 #### 2.1.4 Start Docker Engine
 ```shell
 systemctl enable --now docker
 ```
 
-![12.png](../images/docs/03-kubernetes-control-plane/12.png)
+![12.png](../../images/docs/infra/03-kubernetes-control-plane/12.png)
 
 #### 2.1.5 Verify that the installation is successful by running the hello-world image
 ```shell
 docker run hello-world
 ```
 
-![13.png](../images/docs/03-kubernetes-control-plane/13.png)
+![13.png](../../images/docs/infra/03-kubernetes-control-plane/13.png)
 
 ### 2.2 Install cri-dockerd
 
@@ -127,9 +127,9 @@ tar -xf cri-dockerd-0.3.26.amd64.tgz
 mv cri-dockerd/cri-dockerd /usr/local/bin/
 ```
 
-![14.png](../images/docs/03-kubernetes-control-plane/14.png)
+![14.png](../../images/docs/infra/03-kubernetes-control-plane/14.png)
 
-![15.png](../images/docs/03-kubernetes-control-plane/15.png)
+![15.png](../../images/docs/infra/03-kubernetes-control-plane/15.png)
 
 #### 2.2.2 Download cri-docker service and socket
 ```shell
@@ -139,13 +139,13 @@ wget https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/sys
 mv cri-docker.service cri-docker.socket /etc/systemd/system/
 ```
 
-![16.png](../images/docs/03-kubernetes-control-plane/16.png)
-![17.png](../images/docs/03-kubernetes-control-plane/17.png)
+![16.png](../../images/docs/infra/03-kubernetes-control-plane/16.png)
+![17.png](../../images/docs/infra/03-kubernetes-control-plane/17.png)
 
 
 > **Note**: Here we modify cri-dockerd path and specify the pause image version: --pod-infra-container-image registry.aliyuncs.com/google_containers/pause:3.10.2
 
-![18.png](../images/docs/03-kubernetes-control-plane/18.png)
+![18.png](../../images/docs/infra/03-kubernetes-control-plane/18.png)
 
 #### 2.2.3 Enable cri-docker
 ```shell
@@ -153,7 +153,7 @@ systemctl daemon-reload
 systemctl enable --now cri-docker.socket
 ```
 
-![19.png](../images/docs/03-kubernetes-control-plane/19.png)
+![19.png](../../images/docs/infra/03-kubernetes-control-plane/19.png)
 
 ---
 
@@ -170,19 +170,19 @@ gpgkey=https://pkgs.k8s.io/core:/stable:/v1.36/rpm/repodata/repomd.xml.key
 exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 ```
-![20.png](../images/docs/03-kubernetes-control-plane/20.png)
+![20.png](../../images/docs/infra/03-kubernetes-control-plane/20.png)
 
 ```shell
 dnf -y install kubelet kubeadm kubectl --disableexcludes=kubernetes
 ```
 
-![21.png](../images/docs/03-kubernetes-control-plane/21.png)
+![21.png](../../images/docs/infra/03-kubernetes-control-plane/21.png)
 
 ```shell
 systemctl enable --now kubelet
 ```
 
-![22.png](../images/docs/03-kubernetes-control-plane/22.png)
+![22.png](../../images/docs/infra/03-kubernetes-control-plane/22.png)
 
 ## Creating a cluster with kubeadm
 
@@ -207,9 +207,9 @@ kubeadm init \
 | cri-socket                   | Docker is chosen as our CRI, hence its socket file is used.                           |
 | image-repository             | Domestic mirror repositories are utilized to speed up image pulling.                  |
 
-![23.png](../images/docs/03-kubernetes-control-plane/23.png)
+![23.png](../../images/docs/infra/03-kubernetes-control-plane/23.png)
 
-![24.png](../images/docs/03-kubernetes-control-plane/24.png)
+![24.png](../../images/docs/infra/03-kubernetes-control-plane/24.png)
 
 ---
 
@@ -220,4 +220,4 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl get nodes
 ```
 
-![25.png](../images/docs/03-kubernetes-control-plane/25.png)
+![25.png](../../images/docs/infra/03-kubernetes-control-plane/25.png)
