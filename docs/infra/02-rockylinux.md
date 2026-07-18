@@ -38,12 +38,16 @@
 
 ![17.png](../../images/docs/infra/02-rockylinux/17.png)
 
-> **Note**: Install operating systems for the other two nodes in the same way. If cloning is used, log into the newly cloned virtual machines to modify their IP and MAC addresses.
+![18.png](../../images/docs/infra/02-rockylinux/18.png)
+
+> **Note**: You may either install operating systems on other virtual machines in the same way, or clone virtual machines with pre-installed operating systems.
+> 
+> However, if you use the cloning method, you need to manually modify the IP address and MAC address of the cloned virtual machine.
 
 ---
 
 ## Verification
 
-> **Note**: Log in to the three virtual machines using Xshell and operate all three simultaneously via its multi-session feature.
+> **Note**: Log in to the all virtual machines using Xshell and operate all three simultaneously via its multi-session feature.
 
-![18.png](../../images/docs/infra/02-rockylinux/18.png)
+![19.png](../../images/docs/infra/02-rockylinux/19.png)

@@ -50,6 +50,6 @@
 
 ---
 
-> **Note**: Create the k8s-worker1 and k8s-worker2 nodes in the same manner, or create other nodes by cloning k8s-master.
+> **Note**: You can either create additional virtual machines using the same method or create them via cloning.
 
 ![19.png](../../images/docs/infra/01-vmware/19.png)
