@@ -7,7 +7,7 @@
 ## Install kubelet, kubeadm and kubectl
 
 ```shell
-cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+cat <<EOF | tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.36/rpm/

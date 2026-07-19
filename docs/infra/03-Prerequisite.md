@@ -61,7 +61,7 @@ getenforce
 
 ```shell
 modprobe br_netfilter
-echo 'br_netfilter' | sudo tee /etc/modules-load.d/k8s.conf
+echo 'br_netfilter' | tee /etc/modules-load.d/k8s.conf
 ```
 
 ![06.png](../../images/docs/infra/03-Prerequisite/06.png)
