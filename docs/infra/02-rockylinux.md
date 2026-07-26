@@ -1,7 +1,5 @@
 # How to Install Rockylinux
 
----
-
 ## Installation
 
 ![01.png](../../images/docs/infra/02-rockylinux/01.png)

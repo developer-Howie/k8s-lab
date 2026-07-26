@@ -2,8 +2,6 @@
 
 ###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
----
-
 ## Installation
 
 ```bash
@@ -11,9 +9,9 @@ helm repo add metallb https://metallb.github.io/metallb
 helm install metallb metallb/metallb --version 0.16.1 --create-namespace -n metallb
 ```
 
-![01.png](../../images/docs/infra/07-metallb/01.png)
+![01.png](../../images/docs/infra/09-metallb/01.png)
 
-![02.png](../../images/docs/infra/07-metallb/02.png)
+![02.png](../../images/docs/infra/09-metallb/02.png)
 
 ```yaml
 # Here we select the simpler L2 mode and allocate an IP address pool.
@@ -73,6 +71,6 @@ spec:
       targetPort: 80
 ```
 
-![03.png](../../images/docs/infra/07-metallb/03.png)
+![03.png](../../images/docs/infra/09-metallb/03.png)
 
-![04.png](../../images/docs/infra/07-metallb/04.png)
+![04.png](../../images/docs/infra/09-metallb/04.png)

@@ -1,7 +1,5 @@
 # How to Create VM
 
----
-
 ![01.png](../../images/docs/infra/01-vmware/01.png)
 
 ![02.png](../../images/docs/infra/01-vmware/02.png)

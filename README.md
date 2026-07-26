@@ -1,7 +1,5 @@
 # k8s-lab
 
----
-
 ###### A personal Kubernetes lab built with kubeadm on VMware, documenting infrastructure setup, Helm deployments, middleware, Java microservices, and GitOps practices. Includes installation guides, configuration files, automation scripts, and architecture documentation.
 
 ## 1. Version
@@ -12,8 +10,8 @@
 | Rocky Linux                   | Rocky-10-latest-x86_64-minimal.iso (Rocky Linux release 10.2 (Red Quartz)) |
 | Docker                        | 29.6.2                                                                     |
 | cri-dockerd                   | cri-dockerd-0.4.4.amd64                                                    |
-| Kubernetes                    | v1.36.2                                                                    |
-| Flannel                       | v0.28.7                                                                    |
+| Kubernetes                    | v1.36.3                                                                    |
+| Flannel                       | v0.28.8                                                                    |
 | MetalLB                       | 0.16.1                                                                     |
 | Nginx-Ingress                 | 2.6.4                                                                      |
 | Cert-Manager                  | 1.21.0                                                                     |

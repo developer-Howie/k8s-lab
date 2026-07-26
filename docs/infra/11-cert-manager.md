@@ -2,8 +2,6 @@
 
 ###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
----
-
 ## Installation
 
 ```shell
@@ -11,9 +9,9 @@ helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --version v1.21.0 --create-namespace -n cert-manager --set crds.enabled=true 
 ```
 
-![01.png](../../images/docs/infra/09-cert-manager/01.png)
+![01.png](../../images/docs/infra/11-cert-manager/01.png)
 
-![02.png](../../images/docs/infra/09-cert-manager/02.png)
+![02.png](../../images/docs/infra/11-cert-manager/02.png)
 
 ```yaml
 # This YAML manifest deploys a complete self-signed root CA system via cert-manager,
@@ -116,6 +114,6 @@ spec:
             path: /
 ```
 
-![03.png](../../images/docs/infra/09-cert-manager/03.png)
+![03.png](../../images/docs/infra/11-cert-manager/03.png)
 
-![04.png](../../images/docs/infra/09-cert-manager/04.png)
+![04.png](../../images/docs/infra/11-cert-manager/04.png)

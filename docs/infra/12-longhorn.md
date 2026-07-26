@@ -2,8 +2,6 @@
 
 ###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
----
-
 ## Installation
 
 > Since Longhorn is chosen as our CSI implementation, iscsi-initiator-utils must be installed in advance.
@@ -14,16 +12,16 @@ dnf -y install iscsi-initiator-utils
 systemctl enable --now iscsid
 ```
 
-![01.png](../../images/docs/infra/10-longhorn/01.png)
+![01.png](../../images/docs/infra/12-longhorn/01.png)
 
 ```shell
 helm repo add longhorn https://charts.longhorn.io
 helm install longhorn longhorn/longhorn --version 1.12.0 --create-namespace -n longhorn-system
 ```
 
-![02.png](../../images/docs/infra/10-longhorn/02.png)
+![02.png](../../images/docs/infra/12-longhorn/02.png)
 
-![03.png](../../images/docs/infra/10-longhorn/03.png)
+![03.png](../../images/docs/infra/12-longhorn/03.png)
 
 > Since the NFS protocol is selected, nfs-utils needs to be pre-installed.
 
@@ -33,8 +31,8 @@ dnf -y install nfs-utils
 systemctl enable --now rpcbind
 ```
 
-![05.png](../../images/docs/infra/10-longhorn/05.png)
-![06.png](../../images/docs/infra/10-longhorn/06.png)
+![05.png](../../images/docs/infra/12-longhorn/05.png)
+![06.png](../../images/docs/infra/12-longhorn/06.png)
 
 ---
 
@@ -56,7 +54,7 @@ spec:
       storage: 1Gi
 ```
 
-![07.png](../../images/docs/infra/10-longhorn/07.png)
+![07.png](../../images/docs/infra/12-longhorn/07.png)
 
 ---
 
@@ -106,4 +104,4 @@ spec:
         claimName: shared-rwx-pvc
 ```
 
-![08.png](../../images/docs/infra/10-longhorn/08.png)
+![08.png](../../images/docs/infra/12-longhorn/08.png)

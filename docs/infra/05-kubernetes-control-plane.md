@@ -2,45 +2,45 @@
 
 ###### * Unless otherwise specified, all commands shall be executed on all three nodes simultaneously.
 
----
-
 ## Install kubelet, kubeadm and kubectl
 
 ```shell
 cat <<EOF | tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.36/rpm/
+baseurl=https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.36/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.36/rpm/repodata/repomd.xml.key
+gpgkey=https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.36/rpm/repodata/repomd.xml.key
 exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 ```
-![01.png](../../images/docs/infra/04-kubernetes-control-plane/01.png)
+![01.png](../../images/docs/infra/05-kubernetes-control-plane/01.png)
 
 ```shell
 dnf -y install kubelet kubeadm kubectl --disableexcludes=kubernetes
 ```
 
-![02.png](../../images/docs/infra/04-kubernetes-control-plane/02.png)
+![02.png](../../images/docs/infra/05-kubernetes-control-plane/02.png)
 
 ```shell
 systemctl enable --now kubelet
 ```
 
-![03.png](../../images/docs/infra/04-kubernetes-control-plane/03.png)
+![03.png](../../images/docs/infra/05-kubernetes-control-plane/03.png)
 
 ## Creating a cluster with kubeadm
 
 > **Note**: Below commands only running on k8s-master node.
+> 
+> **Note**: You need to remove --cri-socket unix:///var/run/cri-dockerd.sock if you are using containerd rather than docker
 
 ```shell
 # Optional: Pre-download the required images in advance.
 kubeadm config images pull --cri-socket unix:///var/run/cri-dockerd.sock --image-repository registry.aliyuncs.com/google_containers
 ```
 
-![04.png](../../images/docs/infra/04-kubernetes-control-plane/04.png)
+![04.png](../../images/docs/infra/05-kubernetes-control-plane/04.png)
 
 ```shell
 kubeadm init \
@@ -57,9 +57,9 @@ kubeadm init \
 | cri-socket                   | Docker is chosen as our CRI, hence its socket file is used.                           |
 | image-repository             | Domestic mirror repositories are utilized to speed up image pulling.                  |
 
-![05.png](../../images/docs/infra/04-kubernetes-control-plane/05.png)
+![05.png](../../images/docs/infra/05-kubernetes-control-plane/05.png)
 
-![06.png](../../images/docs/infra/04-kubernetes-control-plane/06.png)
+![06.png](../../images/docs/infra/05-kubernetes-control-plane/06.png)
 
 ---
 
@@ -70,4 +70,4 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl get nodes
 ```
 
-![07.png](../../images/docs/infra/04-kubernetes-control-plane/07.png)
+![07.png](../../images/docs/infra/05-kubernetes-control-plane/07.png)
