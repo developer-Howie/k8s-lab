@@ -1,11 +1,14 @@
 # How to Install MetalLB
 
-###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ## Installation
 
-```bash
+```shell
+# Add MetalLB Helm repository
 helm repo add metallb https://metallb.github.io/metallb
+
+# Install MetalLB load balancer
 helm install metallb metallb/metallb --version 0.16.1 --create-namespace -n metallb
 ```
 
@@ -14,7 +17,7 @@ helm install metallb metallb/metallb --version 0.16.1 --create-namespace -n meta
 ![02.png](../../images/docs/infra/09-metallb/02.png)
 
 ```yaml
-# Here we select the simpler L2 mode and allocate an IP address pool.
+# Configure MetalLB in L2 mode with an IP address pool for load balancing
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
@@ -35,9 +38,10 @@ spec:
 
 ## Verification
 
-> Create a Service of LoadBalancer type for testing purposes.
+> **Note**: Create a Service of LoadBalancer type for testing purposes.
 
 ```yaml
+# Create a Deployment and LoadBalancer Service to test MetalLB functionality
 apiVersion: apps/v1
 kind: Deployment
 metadata:

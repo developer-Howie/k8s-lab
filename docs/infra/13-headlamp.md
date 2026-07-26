@@ -1,13 +1,13 @@
 # How to Install Dashboard Headlamp
 
-###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ## Installation
 
-> Since kubernetes-dashboard is now archived and no longer maintained. We will adopt the officially recommended headlamp here.
+> **Note**: Since kubernetes-dashboard is now archived and no longer maintained, we will adopt the officially recommended Headlamp here.
 
 ```yaml
-# values.yaml
+# values.yaml - Configure Headlamp with Ingress for external access
 ingress:
   enabled: true
   ingressClassName: nginx
@@ -19,7 +19,10 @@ ingress:
 ```
 
 ```shell
+# Add Headlamp Helm repository
 helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
+
+# Install Headlamp with custom values
 helm install headlamp headlamp/headlamp --version 0.43.0 --create-namespace -n kube-system -f values.yaml
 ```
 
@@ -33,7 +36,7 @@ helm install headlamp headlamp/headlamp --version 0.43.0 --create-namespace -n k
 
 ## Verification
 
-> Configure forwarding rules for virtual machines to allow access from the Windows host.
+> **Note**: Configure forwarding rules for virtual machines to allow access from the Windows host.
 
 ![04.png](../../images/docs/infra/13-headlamp/04.png)
 
@@ -47,13 +50,14 @@ helm install headlamp headlamp/headlamp --version 0.43.0 --create-namespace -n k
 
 ![09.png](../../images/docs/infra/13-headlamp/09.png)
 
-> Add the host name to the C:\Windows\System32\drivers\etc\hosts file.
+> **Note**: Add the host name to the C:\Windows\System32\drivers\etc\hosts file on Windows.
 
 ![10.png](../../images/docs/infra/13-headlamp/10.png)
 
 ![11.png](../../images/docs/infra/13-headlamp/11.png)
 
 ```shell
+# Generate a token for Headlamp authentication
 kubectl create token headlamp --namespace kube-system
 ```
 

@@ -1,13 +1,19 @@
 # How to Install Helm
 
-###### * Execute the following commands only on the k8s-master node.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
+
+## Install Helm
 
 ```shell
+# Download Helm binary from official release page
 wget https://get.helm.sh/helm-v4.2.3-linux-amd64.tar.gz
+
+# Extract Helm binary
 tar zxf helm-v4.2.3-linux-amd64.tar.gz
 ```
+
 ![01.png](../../images/docs/infra/07-kubectl_helm/01.png)
 
-> add helm cli to environment path
+> **Note**: Add helm CLI to environment PATH.
 
 ![02.png](../../images/docs/infra/07-kubectl_helm/02.png)

@@ -1,21 +1,26 @@
 # How to Install CSI - Longhorn
 
-###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ## Installation
 
-> Since Longhorn is chosen as our CSI implementation, iscsi-initiator-utils must be installed in advance.
+> **Note**: Since Longhorn is chosen as our CSI implementation, iscsi-initiator-utils must be installed in advance.
 
 ```shell
-# This command shall be executed on all four nodes simultaneously
+# Install iscsi-initiator-utils on all four nodes for Longhorn CSI
 dnf -y install iscsi-initiator-utils
+
+# Enable and start iscsid service
 systemctl enable --now iscsid
 ```
 
 ![01.png](../../images/docs/infra/12-longhorn/01.png)
 
 ```shell
+# Add Longhorn Helm repository
 helm repo add longhorn https://charts.longhorn.io
+
+# Install Longhorn CSI
 helm install longhorn longhorn/longhorn --version 1.12.0 --create-namespace -n longhorn-system
 ```
 
@@ -23,11 +28,13 @@ helm install longhorn longhorn/longhorn --version 1.12.0 --create-namespace -n l
 
 ![03.png](../../images/docs/infra/12-longhorn/03.png)
 
-> Since the NFS protocol is selected, nfs-utils needs to be pre-installed.
+> **Note**: Since the NFS protocol is selected for Longhorn, nfs-utils needs to be pre-installed on all nodes.
 
 ```shell
-# This command shall be executed on all four nodes simultaneously
+# Install nfs-utils on all four nodes for NFS support
 dnf -y install nfs-utils
+
+# Enable and start rpcbind service
 systemctl enable --now rpcbind
 ```
 
@@ -38,9 +45,10 @@ systemctl enable --now rpcbind
 
 ## Verification
 
-> Create a PVC for testing purposes.
+> **Note**: Create a PVC with ReadWriteMany access mode for testing purposes.
 
 ```yaml
+# Create a PVC with ReadWriteMany access mode to test shared storage functionality
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -58,9 +66,10 @@ spec:
 
 ---
 
-> Create two Pods. One Pod writes logs to files in the shared directory, while the other reads content from the files in the shared directory and prints them out.
+> **Note**: Create two Pods. One Pod writes logs to files in the shared directory, while the other reads content from the files in the shared directory and prints them out.
 
 ```yaml
+# Create a writer Pod and a reader Pod to demonstrate shared storage functionality
 apiVersion: v1
 kind: Pod
 metadata:

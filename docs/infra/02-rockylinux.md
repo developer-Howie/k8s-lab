@@ -1,4 +1,6 @@
-# How to Install Rockylinux
+# How to Install Rocky Linux
+
+> **Note**: These screenshots demonstrate the step-by-step process of installing Rocky Linux on a virtual machine.
 
 ## Installation
 
@@ -38,14 +40,12 @@
 
 ![18.png](../../images/docs/infra/02-rockylinux/18.png)
 
-> **Note**: You may either install operating systems on other virtual machines in the same way, or clone virtual machines with pre-installed operating systems.
-> 
-> However, if you use the cloning method, you need to manually modify the IP address and MAC address of the cloned virtual machine.
+> **Note**: You may either install operating systems on other virtual machines in the same way, or clone virtual machines with pre-installed operating systems. However, if you use the cloning method, you need to manually modify the IP address and MAC address of the cloned virtual machine to avoid conflicts.
 
 ---
 
 ## Verification
 
-> **Note**: Log in to the all virtual machines using Xshell and operate all three simultaneously via its multi-session feature.
+> **Note**: Log in to all virtual machines using Xshell and operate all three simultaneously via its multi-session feature.
 
 ![19.png](../../images/docs/infra/02-rockylinux/19.png)

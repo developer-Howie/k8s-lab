@@ -1,12 +1,15 @@
 # How to Install Cert Manager
 
-###### * Helm installation can be performed on any node; we take the k8s-master node as an example here.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ## Installation
 
 ```shell
+# Add Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
-helm install cert-manager jetstack/cert-manager --version v1.21.0 --create-namespace -n cert-manager --set crds.enabled=true 
+
+# Install cert-manager with CRDs enabled
+helm install cert-manager jetstack/cert-manager --version v1.21.0 --create-namespace -n cert-manager --set crds.enabled=true
 ```
 
 ![01.png](../../images/docs/infra/11-cert-manager/01.png)
@@ -55,9 +58,10 @@ spec:
 
 ## Verification
 
-> Create an Ingress for testing purposes.
+> **Note**: Create an Ingress with TLS for testing purposes.
 
 ```yaml
+# Create a Deployment, ClusterIP Service and Ingress with TLS to test cert-manager
 apiVersion: apps/v1
 kind: Deployment
 metadata:

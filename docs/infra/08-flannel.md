@@ -1,11 +1,14 @@
 # How to Install CNI - Flannel
 
-###### * Execute the following commands only on the k8s-master node.
+> **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
 
 ## Installation
 
 ```shell
+# Add Flannel Helm repository
 helm repo add flannel https://flannel-io.github.io/flannel
+
+# Install Flannel CNI plugin
 helm install flannel flannel/flannel --version 0.28.8 --create-namespace -n kube-flannel
 ```
 
@@ -13,7 +16,7 @@ helm install flannel flannel/flannel --version 0.28.8 --create-namespace -n kube
 
 ![02.png](../../images/docs/infra/08-flannel/02.png)
 
-> After installing the CNI plugin, flannel will create two network card
+> **Note**: After installing the CNI plugin, Flannel will create two network interfaces on each node: flannel.1 and cni0.
 
 ![03.png](../../images/docs/infra/08-flannel/03.png)
 
@@ -21,9 +24,10 @@ helm install flannel flannel/flannel --version 0.28.8 --create-namespace -n kube
 
 ## Verification
 
-> Create a Service of NodePort type for testing purposes.
+> **Note**: Create a Service of NodePort type for testing purposes.
 
 ```yaml
+# Create a Deployment with 3 replicas and a NodePort Service for testing network connectivity
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,5 +1,7 @@
 # How to Create VM
 
+> **Note**: These screenshots demonstrate the step-by-step process of creating a virtual machine using VMware Workstation.
+
 ![01.png](../../images/docs/infra/01-vmware/01.png)
 
 ![02.png](../../images/docs/infra/01-vmware/02.png)
@@ -34,7 +36,7 @@
 
 ---
 
-> **Note**: Remove unused hardware as needed
+> **Note**: Remove unused hardware (floppy drive, USB controller, etc.) as needed to optimize resources.
 
 ![15.png](../../images/docs/infra/01-vmware/15.png)
 
@@ -48,6 +50,6 @@
 
 ---
 
-> **Note**: You can either create additional virtual machines using the same method or create them via cloning.
+> **Note**: You can either create additional virtual machines using the same method or create them via cloning. Cloning is recommended for faster deployment of multiple identical nodes.
 
 ![19.png](../../images/docs/infra/01-vmware/19.png)
