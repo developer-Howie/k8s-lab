@@ -1,6 +1,8 @@
 # How to Install Helm
 
 > **Note**: Helm installation can be performed on any node; we take the k8s-master node as an example here.
+> 
+> **Note**: Helm requires kubectl to be installed and configured properly on the node before installation.
 
 ## Install Helm
 

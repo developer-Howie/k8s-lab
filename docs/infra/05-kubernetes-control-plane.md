@@ -81,6 +81,8 @@ kubeadm init \
 ## Configure kubectl Access
 
 > **Note**: Since we are logged in as root, we adopt the temporary approach using admin.conf.
+> 
+> **Note**: The export command only takes effect in the current shell session. If you restart the server or open a new terminal session, you need to re-execute the export command or add it to ~/.bashrc for persistence.
 
 ```shell
 # Set KUBECONFIG environment variable to point to admin.conf
