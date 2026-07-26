@@ -25,7 +25,7 @@
 ### 2.1. Cluster Architecture
 
 - 1 Control Plane Node (`k8s-master`)
-- 2 Worker Nodes (`k8s-worker1`, `k8s-worker2`)
+- 2 Worker Nodes (`k8s-worker1`, `k8s-worker2`, `k8s-worker3`)
 
 ### 2.2. IP Address Planning
 
