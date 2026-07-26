@@ -4,20 +4,21 @@
 
 ## 1. Version
 
-| Software & Component          | Version (Chart)                                                            |
-|-------------------------------|----------------------------------------------------------------------------|
-| VMware® Workstation Pro 26H1  | 26.0.0.25388281                                                            |
-| Rocky Linux                   | Rocky-10-latest-x86_64-minimal.iso (Rocky Linux release 10.2 (Red Quartz)) |
-| Docker                        | 29.6.2                                                                     |
-| cri-dockerd                   | cri-dockerd-0.4.4.amd64                                                    |
-| Kubernetes                    | v1.36.3                                                                    |
-| Flannel                       | v0.28.8                                                                    |
-| MetalLB                       | 0.16.1                                                                     |
-| Nginx-Ingress                 | 2.6.4                                                                      |
-| Cert-Manager                  | 1.21.0                                                                     |
-| Longhorn                      | 1.12.0                                                                     |
-| Headlamp                      | 0.43.0                                                                     |
-| Metrics-server                | 3.13.1                                                                     |
+| Software & Component         | Version (Chart)                                                            |
+|------------------------------|----------------------------------------------------------------------------|
+| VMware® Workstation Pro 26H1 | 26.0.0.25388281                                                            |
+| Rocky Linux                  | Rocky-10-latest-x86_64-minimal.iso (Rocky Linux release 10.2 (Red Quartz)) |
+| Containerd.io                | 2.2.6                                                                      |
+| Docker                       | 29.6.2                                                                     |
+| cri-dockerd                  | cri-dockerd-0.4.4.amd64                                                    |
+| Kubernetes                   | v1.36.3                                                                    |
+| Flannel                      | v0.28.8                                                                    |
+| MetalLB                      | 0.16.1                                                                     |
+| Nginx-Ingress                | 2.6.4                                                                      |
+| Cert-Manager                 | 1.21.0                                                                     |
+| Longhorn                     | 1.12.0                                                                     |
+| Headlamp                     | 0.43.0                                                                     |
+| Metrics-server               | 3.13.1                                                                     |
 
 ## 2. Cluster Planning and Design
 
